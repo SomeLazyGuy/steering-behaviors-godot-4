@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://db08popuxkebt"]
+
+[ext_resource type="Script" path="res://agent/agent.gd" id="1_d1l2k"]
+[ext_resource type="Script" path="res://target/target.gd" id="2_bscpj"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Agent" type="Node2D" parent="."]
+position = Vector2(368, 258)
+script = ExtResource("1_d1l2k")
+
+[node name="Target" type="Node2D" parent="."]
+script = ExtResource("2_bscpj")
