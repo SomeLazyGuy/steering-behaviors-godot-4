@@ -1,13 +1,35 @@
-[gd_scene load_steps=3 format=3 uid="uid://db08popuxkebt"]
+[gd_scene load_steps=4 format=3 uid="uid://db08popuxkebt"]
 
-[ext_resource type="Script" path="res://agent/agent.gd" id="1_d1l2k"]
+[ext_resource type="Script" path="res://vehicle/vehicle.gd" id="1_kqnlq"]
 [ext_resource type="Script" path="res://target/target.gd" id="2_bscpj"]
+[ext_resource type="Script" path="res://steering_behaviors/steering_behavior.gd" id="3_lc757"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Agent" type="Node2D" parent="."]
+[node name="Vehicle" type="Node2D" parent="."]
 position = Vector2(368, 258)
-script = ExtResource("1_d1l2k")
+script = ExtResource("1_kqnlq")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="SteeringBehavior" type="Node2D" parent="Vehicle" node_paths=PackedStringArray("target")]
+position = Vector2(-368, -258)
+script = ExtResource("3_lc757")
+target = NodePath("../../Target")
+/type = 2
+/arrive/deceleration = 1
+/arrive/deceleration_tweeker = 0.3
 
 [node name="Target" type="Node2D" parent="."]
+position = Vector2(1408, 350)
 script = ExtResource("2_bscpj")
+radius = 10.0
+color = Color(0, 1, 0, 1)
