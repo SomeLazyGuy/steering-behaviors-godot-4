@@ -20,9 +20,15 @@ enum Deceleration {
 var _type: SteeringBehaviorType;
 var _deceleration: Deceleration;
 var _deceleration_tweeker: float = 0.3;
-var _panic_radius: float = 100;
+var _panic_radius: float;
+var _show_panic_radius: bool;
 
 @onready var _vehicle: Vehicle = get_parent();
+
+func _draw() -> void:
+	if _show_panic_radius:
+		draw_arc(Vector2.ZERO, _panic_radius, 0, 2 * PI, 360, Color(0, 0, 1, 1));
+
 
 func _get(property: StringName):
 	if property == "/type":
@@ -31,6 +37,9 @@ func _get(property: StringName):
 	if property == "/flee/panic_radius":
 		return _panic_radius;
 
+	if property == "/flee/show_panic_radius":
+		return _show_panic_radius;
+
 	if property == "/arrive/deceleration":
 		return _deceleration;
 
@@ -38,13 +47,16 @@ func _get(property: StringName):
 		return _deceleration_tweeker;
 
 
-func _set(property: StringName, value: Variant):
+func _set(property: StringName, value: Variant) -> bool:
 	if property == "/type":
 		_type = value;
 		notify_property_list_changed()
 
 	if property == "/flee/panic_radius":
 		_panic_radius = value;
+
+	if property == "/flee/show_panic_radius":
+		_show_panic_radius = value;
 
 	if property == "/arrive/deceleration":
 		_deceleration = value;
@@ -68,6 +80,13 @@ func _get_property_list() -> Array[Dictionary]:
 		property_list.append({
 			"name": "/flee/panic_radius",
 			"type": TYPE_FLOAT,
+			"hint": PROPERTY_HINT_RANGE,
+			"hint_string": "-1,2000,or_greater",
+		})
+
+		property_list.append({
+			"name": "/flee/show_panic_radius",
+			"type": TYPE_BOOL,
 		})
 
 	if _type == SteeringBehaviorType.ARRIVE:
@@ -84,6 +103,10 @@ func _get_property_list() -> Array[Dictionary]:
 		})
 
 	return property_list
+
+
+func get_show_panic_radius() -> bool:
+	return _show_panic_radius;
 
 
 func calculate() -> Vector2:
@@ -103,14 +126,20 @@ func calculate() -> Vector2:
 
 func _seek() -> Vector2:
 	var _desired_velocity: Vector2 = _vehicle.position.direction_to(target.position) * _vehicle.max_speed;
-	_vehicle.desired_velocity = _desired_velocity;
+	_vehicle.desired_velocity += _desired_velocity;
 	return _desired_velocity - _vehicle.velocity;
 
 
 func _flee() -> Vector2:
-	var _desired_velocity: Vector2 = target.position.direction_to(_vehicle.position) * _vehicle.max_speed;
-	_vehicle.desired_velocity = _desired_velocity;
-	return _desired_velocity - _vehicle.velocity;
+	var _to_target: Vector2 = _vehicle.position - target.position;
+	var _distance: float = _to_target.length();
+
+	if _distance < _panic_radius || _panic_radius < 0:
+		var _desired_velocity: Vector2 = _to_target / _distance * _vehicle.max_speed;
+		_vehicle.desired_velocity += _desired_velocity;
+		return _desired_velocity - _vehicle.velocity;
+
+	return Vector2.ZERO;
 
 
 func _arrive() -> Vector2:
@@ -122,7 +151,7 @@ func _arrive() -> Vector2:
 		_speed = min(_speed, _vehicle.max_speed);
 
 		var _desired_velocity: Vector2 = _to_target * _speed / _distance;
-		_vehicle.desired_velocity = _desired_velocity;
+		_vehicle.desired_velocity += _desired_velocity;
 
 		return _desired_velocity - _vehicle.velocity;
 

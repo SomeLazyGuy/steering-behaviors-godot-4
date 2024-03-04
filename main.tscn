@@ -7,7 +7,7 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Vehicle" type="Node2D" parent="."]
-position = Vector2(368, 258)
+position = Vector2(252, 318)
 script = ExtResource("1_kqnlq")
 width = 20.0
 height = 40.0
@@ -21,15 +21,25 @@ max_turn_rate = 5.0
 _get_automatically = true
 
 [node name="SteeringBehavior" type="Node2D" parent="Vehicle" node_paths=PackedStringArray("target")]
-position = Vector2(-368, -258)
 script = ExtResource("3_lc757")
 target = NodePath("../../Target")
-/type = 2
-/arrive/deceleration = 1
-/arrive/deceleration_tweeker = 0.3
+/type = 1
+/flee/panic_radius = 200.0
+/flee/show_panic_radius = true
+
+[node name="SteeringBehavior2" type="Node2D" parent="Vehicle" node_paths=PackedStringArray("target")]
+script = ExtResource("3_lc757")
+target = NodePath("../../Target2")
+/type = 0
 
 [node name="Target" type="Node2D" parent="."]
 position = Vector2(1408, 350)
+script = ExtResource("2_bscpj")
+radius = 10.0
+color = Color(0, 1, 0, 1)
+
+[node name="Target2" type="Node2D" parent="."]
+position = Vector2(1622, 444)
 script = ExtResource("2_bscpj")
 radius = 10.0
 color = Color(0, 1, 0, 1)

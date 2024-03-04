@@ -35,7 +35,8 @@ func _draw() -> void:
 	draw_primitive(_verticies, [color], _verticies);
 
 	if show_desired_velocity:
-		draw_line(Vector2.ZERO, desired_velocity.rotated(-rotation), Color(0, 0, 1, 1), 1);
+		draw_line(Vector2.ZERO, desired_velocity.rotated(-rotation).limit_length(max_speed), Color(0, 0, 1, 1), 1);
+		desired_velocity = Vector2.ZERO;
 
 	if show_velocity:
 		draw_line(Vector2.ZERO, velocity.rotated(-rotation), Color(0, 1, 0, 1), 1);
@@ -78,7 +79,7 @@ func _wrap_around() -> void:
 
 
 func _calculate_steering_force() -> Vector2:
-	var _steering_force: Vector2;
+	var _steering_force: Vector2 = Vector2.ZERO;
 
 	for _steering_behavior in _steering_behaviors:
 		_steering_force += _steering_behavior.calculate();
