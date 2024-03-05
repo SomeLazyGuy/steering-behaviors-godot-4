@@ -20,26 +20,33 @@ max_force = 5.0
 max_turn_rate = 5.0
 _get_automatically = true
 
-[node name="SteeringBehavior" type="Node2D" parent="Vehicle" node_paths=PackedStringArray("target")]
+[node name="SteeringBehavior" type="Node2D" parent="Vehicle" node_paths=PackedStringArray("target_node")]
 script = ExtResource("3_lc757")
-target = NodePath("../../Target")
-/type = 1
-/flee/panic_radius = 200.0
-/flee/show_panic_radius = true
+target_node = NodePath("../../Vehicle2")
+/type = 3
+/pursuit/show_predicted_position = true
 
-[node name="SteeringBehavior2" type="Node2D" parent="Vehicle" node_paths=PackedStringArray("target")]
+[node name="Vehicle2" type="Node2D" parent="."]
+position = Vector2(601, 747)
+script = ExtResource("1_kqnlq")
+width = 20.0
+height = 40.0
+color = Color(0, 0.639216, 0.360784, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="SteeringBehavior" type="Node2D" parent="Vehicle2" node_paths=PackedStringArray("target_node")]
 script = ExtResource("3_lc757")
-target = NodePath("../../Target2")
+target_node = NodePath("../../Target")
 /type = 0
 
 [node name="Target" type="Node2D" parent="."]
 position = Vector2(1408, 350)
-script = ExtResource("2_bscpj")
-radius = 10.0
-color = Color(0, 1, 0, 1)
-
-[node name="Target2" type="Node2D" parent="."]
-position = Vector2(1622, 444)
 script = ExtResource("2_bscpj")
 radius = 10.0
 color = Color(0, 1, 0, 1)
