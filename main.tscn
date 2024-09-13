@@ -24,38 +24,10 @@ _get_automatically = true
 script = ExtResource("3_lc757")
 target_node = NodePath("../../Target")
 /type = 5
-/wander/wander_radius = 50.0
-/wander/wander_distance = 20.0
+/wander/wander_radius = 20.0
+/wander/wander_distance = 10.0
 /wander/wander_jitter = 50.0
 /wander/show_visuals = 1.0
-
-[node name="SteeringBehavior2" type="Node2D" parent="Vehicle" node_paths=PackedStringArray("target_node")]
-script = ExtResource("3_lc757")
-target_node = NodePath("../../Vehicle2")
-/type = 4
-/evade/panic_radius = 200.0
-/evade/show_panic_radius = true
-/evade/show_predicted_position = true
-
-[node name="Vehicle2" type="Node2D" parent="."]
-position = Vector2(1009, 644)
-script = ExtResource("1_kqnlq")
-width = 40.0
-height = 80.0
-color = Color(0.87451, 0, 0.831373, 1)
-show_velocity = true
-show_desired_velocity = true
-mass = 1.0
-max_speed = 150.0
-max_force = 5.0
-max_turn_rate = 5.0
-_get_automatically = true
-
-[node name="SteeringBehavior" type="Node2D" parent="Vehicle2" node_paths=PackedStringArray("target_node")]
-script = ExtResource("3_lc757")
-target_node = NodePath("../../Vehicle")
-/type = 3
-/pursuit/show_predicted_position = true
 
 [node name="Target" type="Node2D" parent="."]
 position = Vector2(1408, 350)
