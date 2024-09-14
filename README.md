@@ -25,7 +25,7 @@ To run the project:
 3. Open the project in Godot by selecting the project.godot file.
 4. Play the different scenes to see some demos of the steering behaviors in action.
 
-The different steering behaviors can simply be configured in the editor to play around with them without changing any code.
+The scripts are organized under the `scripts/` folder, with each behavior represented by its own script file for easy reference. There are also predifined nodes under the `steering_behavior/` folder to just attach as a child and configure in the editor. To get an overview over every steering behavior take a look at the example scenes under `scenes/`.
 
 ### Prerequisites
 
