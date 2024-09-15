@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://nbjj88i2xrwp"]
+
+[ext_resource type="Script" path="res://scripts/vehicle/vehicle.gd" id="1_5e447"]
+[ext_resource type="PackedScene" uid="uid://dovd6iny4bgat" path="res://steering_behaviors/arrive.tscn" id="3_c428n"]
+[ext_resource type="PackedScene" uid="uid://bg7ayi1srv2wr" path="res://steering_behaviors/obstacle_avoidance.tscn" id="3_fty2u"]
+[ext_resource type="Script" path="res://scripts/target/target.gd" id="3_lcdf7"]
+[ext_resource type="Script" path="res://scripts/obstacle/obstacle.gd" id="4_p485h"]
+
+[node name="ObstacleAvoidanceDemo" type="Node2D"]
+
+[node name="Vehicle" type="Node2D" parent="."]
+position = Vector2(283, 232)
+script = ExtResource("1_5e447")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="ObstacleAvoidance" parent="Vehicle" instance=ExtResource("3_fty2u")]
+min_detection_box_length = 100.0
+show_visuals = true
+
+[node name="Arrive" parent="Vehicle" node_paths=PackedStringArray("target_node") instance=ExtResource("3_c428n")]
+target_node = NodePath("../../Target")
+deceleration = 1
+
+[node name="Target" type="Node2D" parent="."]
+position = Vector2(1046, 272)
+script = ExtResource("3_lcdf7")
+radius = 10.0
+color = Color(0, 1, 0, 1)
+
+[node name="Obstacle2" type="Node2D" parent="."]
+position = Vector2(651, 349)
+script = ExtResource("4_p485h")
+radius = 20.0
+
+[node name="Obstacle3" type="Node2D" parent="."]
+position = Vector2(712, 290)
+script = ExtResource("4_p485h")
+radius = 20.0
+
+[node name="Obstacle" type="Node2D" parent="."]
+position = Vector2(523, 284)
+script = ExtResource("4_p485h")
+radius = 40.0

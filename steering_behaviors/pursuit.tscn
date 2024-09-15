@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3qnasg45id3j"]
+
+[ext_resource type="Script" path="res://scripts/steering_behaviors/pursuit.gd" id="1_d62i6"]
+
+[node name="Pursuit" type="Node2D"]
+script = ExtResource("1_d62i6")

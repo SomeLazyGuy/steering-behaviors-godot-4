@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkpocryh8pyxb"]
+
+[ext_resource type="Script" path="res://scripts/vehicle/vehicle.gd" id="1_bu670"]
+[ext_resource type="PackedScene" uid="uid://badf02oepi7pi" path="res://steering_behaviors/flee.tscn" id="2_4byjw"]
+[ext_resource type="Script" path="res://scripts/target/target.gd" id="3_mo0wd"]
+
+[node name="FleeDemo" type="Node2D"]
+
+[node name="Vehicle" type="Node2D" parent="."]
+position = Vector2(252, 318)
+script = ExtResource("1_bu670")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="Flee" parent="Vehicle" node_paths=PackedStringArray("target_node") instance=ExtResource("2_4byjw")]
+target_node = NodePath("../../Target")
+panic_radius = 100.0
+show_panic_radius = true
+
+[node name="Target" type="Node2D" parent="."]
+position = Vector2(970, 419)
+script = ExtResource("3_mo0wd")
+radius = 10.0
+color = Color(0, 1, 0, 1)

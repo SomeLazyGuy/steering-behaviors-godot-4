@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://db08popuxkebt"]
+
+[ext_resource type="Script" path="res://scripts/vehicle/vehicle.gd" id="1_j5p57"]
+[ext_resource type="Script" path="res://scripts/target/target.gd" id="2_ssnrx"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Vehicle" type="Node2D" parent="."]
+position = Vector2(252, 318)
+script = ExtResource("1_j5p57")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="Target" type="Node2D" parent="."]
+position = Vector2(830, 323)
+script = ExtResource("2_ssnrx")
+radius = 10.0
+color = Color(0, 1, 0, 1)

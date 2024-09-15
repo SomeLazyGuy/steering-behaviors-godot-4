@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbhut54lgo8ty"]
+
+[ext_resource type="Script" path="res://scripts/vehicle/vehicle.gd" id="1_i5ea3"]
+[ext_resource type="PackedScene" uid="uid://dln5vcey51a2" path="res://steering_behaviors/seek.tscn" id="2_rtrue"]
+[ext_resource type="Script" path="res://scripts/target/target.gd" id="3_xpixd"]
+
+[node name="SeekDemo" type="Node2D"]
+
+[node name="Vehicle" type="Node2D" parent="."]
+position = Vector2(252, 318)
+script = ExtResource("1_i5ea3")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="Seek" parent="Vehicle" node_paths=PackedStringArray("target_node") instance=ExtResource("2_rtrue")]
+target_node = NodePath("../../Target")
+
+[node name="Target" type="Node2D" parent="."]
+position = Vector2(970, 419)
+script = ExtResource("3_xpixd")
+radius = 10.0
+color = Color(0, 1, 0, 1)

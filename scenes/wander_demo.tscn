@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://drjhsf3aiqubc"]
+
+[ext_resource type="Script" path="res://scripts/vehicle/vehicle.gd" id="1_jn5x7"]
+[ext_resource type="PackedScene" uid="uid://cdhe2yj6ccokk" path="res://steering_behaviors/wander.tscn" id="2_1mnya"]
+
+[node name="WanderDemo" type="Node2D"]
+
+[node name="Vehicle" type="Node2D" parent="."]
+position = Vector2(252, 318)
+script = ExtResource("1_jn5x7")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="Wander" parent="Vehicle" instance=ExtResource("2_1mnya")]
+wander_radius = 100.0
+wander_jitter = 500.0
+show_visuals = true

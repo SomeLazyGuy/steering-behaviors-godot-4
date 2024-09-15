@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlb0fjp0qags4"]
+
+[ext_resource type="Script" path="res://scripts/vehicle/vehicle.gd" id="1_xndio"]
+[ext_resource type="PackedScene" uid="uid://b3qnasg45id3j" path="res://steering_behaviors/pursuit.tscn" id="2_owav0"]
+[ext_resource type="Script" path="res://scripts/target/target.gd" id="3_ox2tn"]
+[ext_resource type="PackedScene" uid="uid://dln5vcey51a2" path="res://steering_behaviors/seek.tscn" id="3_pdwuf"]
+
+[node name="PursuitDemo" type="Node2D"]
+
+[node name="Vehicle" type="Node2D" parent="."]
+position = Vector2(706, 621)
+script = ExtResource("1_xndio")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="Pursuit" parent="Vehicle" node_paths=PackedStringArray("target_node") instance=ExtResource("2_owav0")]
+target_node = NodePath("../../Vehicle2")
+show_predicted_position = true
+
+[node name="Vehicle2" type="Node2D" parent="."]
+position = Vector2(252, 318)
+script = ExtResource("1_xndio")
+width = 20.0
+height = 40.0
+color = Color(0, 100, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="Seek" parent="Vehicle2" node_paths=PackedStringArray("target_node") instance=ExtResource("3_pdwuf")]
+target_node = NodePath("../../Target")
+
+[node name="Target" type="Node2D" parent="."]
+position = Vector2(970, 419)
+script = ExtResource("3_ox2tn")
+radius = 10.0
+color = Color(0, 1, 0, 1)
