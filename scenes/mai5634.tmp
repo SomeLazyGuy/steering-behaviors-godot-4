@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://db08popuxkebt"]
+
+[ext_resource type="Script" path="res://scripts/vehicle/vehicle.gd" id="1_j5p57"]
+[ext_resource type="PackedScene" uid="uid://cccumotmdraem" path="res://steering_behaviors/wall_avoidance.tscn" id="2_l0fs2"]
+[ext_resource type="Script" path="res://scripts/target/target.gd" id="2_ssnrx"]
+[ext_resource type="Script" path="res://scripts/wall/wall.gd" id="3_qq54c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4c6hr"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Vehicle" type="Node2D" parent="."]
+position = Vector2(142, 138)
+script = ExtResource("1_j5p57")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="WallAvoidance" parent="Vehicle" instance=ExtResource("2_l0fs2")]
+feeler_length = 100.0
+
+[node name="Target" type="Node2D" parent="."]
+position = Vector2(830, 323)
+script = ExtResource("2_ssnrx")
+radius = 10.0
+color = Color(0, 1, 0, 1)
+
+[node name="Wall" type="Node2D" parent="."]
+position = Vector2(159, 62)
+rotation = 0.785398
+script = ExtResource("3_qq54c")
+length = 100.0
+width = 10.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Wall"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/StaticBody2D"]
+shape = SubResource("RectangleShape2D_4c6hr")

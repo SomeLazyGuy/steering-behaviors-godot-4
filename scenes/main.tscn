@@ -6,7 +6,7 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Vehicle" type="Node2D" parent="."]
-position = Vector2(252, 318)
+position = Vector2(234, 338)
 script = ExtResource("1_j5p57")
 width = 20.0
 height = 40.0
@@ -20,7 +20,7 @@ max_turn_rate = 5.0
 _get_automatically = true
 
 [node name="Target" type="Node2D" parent="."]
-position = Vector2(830, 323)
+position = Vector2(755, 348)
 script = ExtResource("2_ssnrx")
 radius = 10.0
 color = Color(0, 1, 0, 1)
