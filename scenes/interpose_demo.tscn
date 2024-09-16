@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3gjg6iypkfst"]
+
+[ext_resource type="Script" path="res://scripts/vehicle/vehicle.gd" id="1_ut60l"]
+[ext_resource type="PackedScene" uid="uid://dovd6iny4bgat" path="res://steering_behaviors/arrive.tscn" id="2_e2l31"]
+[ext_resource type="PackedScene" uid="uid://rcfw7vjo424v" path="res://steering_behaviors/interpose.tscn" id="2_pyr1u"]
+[ext_resource type="Script" path="res://scripts/target/target.gd" id="2_ue7fe"]
+
+[node name="InterposeDemo" type="Node2D"]
+
+[node name="Vehicle" type="Node2D" parent="."]
+position = Vector2(623, 190)
+script = ExtResource("1_ut60l")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="Interpose" parent="Vehicle" node_paths=PackedStringArray("target1", "target2") instance=ExtResource("2_pyr1u")]
+target1 = NodePath("../../Vehicle2")
+target2 = NodePath("../../Vehicle3")
+show_visuals = true
+
+[node name="Vehicle2" type="Node2D" parent="."]
+position = Vector2(175, 382)
+script = ExtResource("1_ut60l")
+width = 20.0
+height = 40.0
+color = Color(0, 0, 1, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="Arrive" parent="Vehicle2" node_paths=PackedStringArray("target_node") instance=ExtResource("2_e2l31")]
+target_node = NodePath("../../Target")
+deceleration = 2
+
+[node name="Vehicle3" type="Node2D" parent="."]
+position = Vector2(841, 385)
+script = ExtResource("1_ut60l")
+width = 20.0
+height = 40.0
+color = Color(0, 0, 1, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="Arrive" parent="Vehicle3" node_paths=PackedStringArray("target_node") instance=ExtResource("2_e2l31")]
+target_node = NodePath("../../Target")
+deceleration = 2
+
+[node name="Target" type="Node2D" parent="."]
+position = Vector2(499, 40)
+script = ExtResource("2_ue7fe")
+radius = 10.0
+color = Color(0, 1, 0, 1)

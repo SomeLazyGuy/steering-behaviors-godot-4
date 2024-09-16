@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://rcfw7vjo424v"]
+
+[ext_resource type="Script" path="res://scripts/steering_behaviors/interpose.gd" id="1_mbqo4"]
+
+[node name="Interpose" type="Node2D"]
+script = ExtResource("1_mbqo4")
