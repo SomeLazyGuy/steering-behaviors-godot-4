@@ -1,0 +1,88 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0jpwjt2r7dro"]
+
+[ext_resource type="Script" path="res://scripts/vehicle/vehicle.gd" id="1_631b7"]
+[ext_resource type="PackedScene" uid="uid://cfm2eht12uec8" path="res://steering_behaviors/hide.tscn" id="2_nhca2"]
+[ext_resource type="Script" path="res://scripts/target/target.gd" id="2_qklse"]
+[ext_resource type="PackedScene" uid="uid://dovd6iny4bgat" path="res://steering_behaviors/arrive.tscn" id="3_kiuyi"]
+[ext_resource type="Script" path="res://scripts/obstacle/obstacle.gd" id="4_fx8h3"]
+
+[node name="HidingDemo" type="Node2D"]
+
+[node name="Vehicle" type="Node2D" parent="."]
+position = Vector2(234, 338)
+script = ExtResource("1_631b7")
+width = 20.0
+height = 40.0
+color = Color(0, 0, 1, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="Hide" parent="Vehicle" node_paths=PackedStringArray("target") instance=ExtResource("2_nhca2")]
+target = NodePath("../../Vehicle2")
+show_hiding_spots = true
+
+[node name="Vehicle2" type="Node2D" parent="."]
+position = Vector2(829, 573)
+script = ExtResource("1_631b7")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="Arrive" parent="Vehicle2" node_paths=PackedStringArray("target_node") instance=ExtResource("3_kiuyi")]
+target_node = NodePath("../../Target")
+deceleration = 3
+
+[node name="Target" type="Node2D" parent="."]
+position = Vector2(755, 348)
+script = ExtResource("2_qklse")
+radius = 10.0
+color = Color(0, 1, 0, 1)
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Obstacle" type="Node2D" parent="Obstacles"]
+position = Vector2(523, 284)
+script = ExtResource("4_fx8h3")
+radius = 40.0
+
+[node name="Obstacle2" type="Node2D" parent="Obstacles"]
+position = Vector2(691, 209)
+script = ExtResource("4_fx8h3")
+radius = 40.0
+
+[node name="Obstacle3" type="Node2D" parent="Obstacles"]
+position = Vector2(612, 474)
+script = ExtResource("4_fx8h3")
+radius = 40.0
+
+[node name="Obstacle4" type="Node2D" parent="Obstacles"]
+position = Vector2(967, 203)
+script = ExtResource("4_fx8h3")
+radius = 40.0
+
+[node name="Obstacle5" type="Node2D" parent="Obstacles"]
+position = Vector2(245, 147)
+script = ExtResource("4_fx8h3")
+radius = 40.0
+
+[node name="Obstacle6" type="Node2D" parent="Obstacles"]
+position = Vector2(330, 514)
+script = ExtResource("4_fx8h3")
+radius = 40.0
+
+[node name="Obstacle7" type="Node2D" parent="Obstacles"]
+position = Vector2(941, 484)
+script = ExtResource("4_fx8h3")
+radius = 40.0
