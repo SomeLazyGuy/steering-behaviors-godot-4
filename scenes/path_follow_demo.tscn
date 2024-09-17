@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgvmfreexwddv"]
+
+[ext_resource type="Script" path="res://scripts/vehicle/vehicle.gd" id="1_a4qke"]
+[ext_resource type="PackedScene" uid="uid://b3ghdtsm5djhu" path="res://steering_behaviors/path_follow.tscn" id="2_0d4b5"]
+
+[node name="PathFollowDemo" type="Node2D"]
+
+[node name="Vehicle" type="Node2D" parent="."]
+position = Vector2(61, 44)
+script = ExtResource("1_a4qke")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="PathFollow" parent="Vehicle" node_paths=PackedStringArray("path") instance=ExtResource("2_0d4b5")]
+path = NodePath("../../Path")
+loop = true
+draw_points = true
+draw_lines = true
+
+[node name="Path" type="Node2D" parent="."]
+
+[node name="Point" type="Node2D" parent="Path"]
+position = Vector2(300, 180)
+
+[node name="Point2" type="Node2D" parent="Path"]
+position = Vector2(471, 181)
+
+[node name="Point3" type="Node2D" parent="Path"]
+position = Vector2(566, 317)
+
+[node name="Point4" type="Node2D" parent="Path"]
+position = Vector2(400, 446)
+
+[node name="Point5" type="Node2D" parent="Path"]
+position = Vector2(176, 393)
+
+[node name="Point6" type="Node2D" parent="Path"]
+position = Vector2(148, 254)
+
+[node name="Point7" type="Node2D" parent="Path"]
+position = Vector2(225, 215)
