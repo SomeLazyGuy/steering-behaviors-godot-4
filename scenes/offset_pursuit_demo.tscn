@@ -1,0 +1,122 @@
+[gd_scene load_steps=5 format=3 uid="uid://k12g7vptsvb7"]
+
+[ext_resource type="Script" path="res://scripts/vehicle/vehicle.gd" id="1_xky3p"]
+[ext_resource type="PackedScene" uid="uid://dovd6iny4bgat" path="res://steering_behaviors/arrive.tscn" id="2_1k5kc"]
+[ext_resource type="PackedScene" uid="uid://c0jhy8yt30l5h" path="res://steering_behaviors/offset_pursuit.tscn" id="2_2kiko"]
+[ext_resource type="Script" path="res://scripts/target/target.gd" id="3_co7du"]
+
+[node name="OffsetPursuitDemo" type="Node2D"]
+
+[node name="Leader" type="Node2D" parent="."]
+position = Vector2(300, 330)
+script = ExtResource("1_xky3p")
+width = 20.0
+height = 40.0
+color = Color(2.88785e-06, 0.631237, 0.454291, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="Arrive" parent="Leader" node_paths=PackedStringArray("target_node") instance=ExtResource("2_1k5kc")]
+target_node = NodePath("../../Target")
+deceleration = 1
+
+[node name="Vehicle2" type="Node2D" parent="."]
+position = Vector2(234, 338)
+script = ExtResource("1_xky3p")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="OffsetPursuit" parent="Vehicle2" node_paths=PackedStringArray("leader") instance=ExtResource("2_2kiko")]
+leader = NodePath("../../Leader")
+offset = Vector2(40, 40)
+
+[node name="Vehicle3" type="Node2D" parent="."]
+position = Vector2(234, 338)
+script = ExtResource("1_xky3p")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="OffsetPursuit" parent="Vehicle3" node_paths=PackedStringArray("leader") instance=ExtResource("2_2kiko")]
+leader = NodePath("../../Leader")
+offset = Vector2(-40, 40)
+
+[node name="Vehicle4" type="Node2D" parent="."]
+position = Vector2(234, 338)
+script = ExtResource("1_xky3p")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="OffsetPursuit" parent="Vehicle4" node_paths=PackedStringArray("leader") instance=ExtResource("2_2kiko")]
+leader = NodePath("../../Leader")
+offset = Vector2(0, 80)
+
+[node name="Vehicle5" type="Node2D" parent="."]
+position = Vector2(234, 338)
+script = ExtResource("1_xky3p")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="OffsetPursuit" parent="Vehicle5" node_paths=PackedStringArray("leader") instance=ExtResource("2_2kiko")]
+leader = NodePath("../../Leader")
+offset = Vector2(-80, 80)
+
+[node name="Vehicle6" type="Node2D" parent="."]
+position = Vector2(234, 338)
+script = ExtResource("1_xky3p")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="OffsetPursuit" parent="Vehicle6" node_paths=PackedStringArray("leader") instance=ExtResource("2_2kiko")]
+leader = NodePath("../../Leader")
+offset = Vector2(80, 80)
+
+[node name="Target" type="Node2D" parent="."]
+position = Vector2(755, 348)
+script = ExtResource("3_co7du")
+radius = 10.0
+color = Color(0, 1, 0, 1)
