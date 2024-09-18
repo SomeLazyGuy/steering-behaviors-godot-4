@@ -21,6 +21,7 @@ The repository includes the following behaviors:
 - **Group Behaviors**: Basic group behaviors like **Cohesion**, **Seperation** and **Alignment**.
 
 Additional behaviors may be added in future updates, such as **Flocking**, **Spacial Partitioning**, **Smoothing**, and more.
+As well as some other features like **Weighted Truncated Sum**, **Weighted Truncated Running Sum with Prioritization**, **Prioritized Dithering**.
 
 ## Getting Started
 
