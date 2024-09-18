@@ -1,0 +1,261 @@
+[gd_scene load_steps=5 format=3 uid="uid://d7kflbs7avvj"]
+
+[ext_resource type="Script" path="res://scripts/vehicle/vehicle.gd" id="1_l3c2a"]
+[ext_resource type="PackedScene" uid="uid://gkobuorskxba" path="res://steering_behaviors/seperation.tscn" id="2_wqi6d"]
+[ext_resource type="PackedScene" uid="uid://b5qpivy16dxwj" path="res://steering_behaviors/alignment.tscn" id="3_qn046"]
+[ext_resource type="PackedScene" uid="uid://dhn68ro4vosi3" path="res://steering_behaviors/cohesion.tscn" id="4_jeawf"]
+
+[node name="GroupBehaviorsDemo" type="Node2D"]
+
+[node name="Speration" type="Node2D" parent="."]
+
+[node name="Vehicle" type="Node2D" parent="Speration"]
+position = Vector2(235, 190)
+script = ExtResource("1_l3c2a")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="Seperation" parent="Speration/Vehicle" instance=ExtResource("2_wqi6d")]
+position = Vector2(-2, 0)
+radius = 80.0
+show_radius = true
+
+[node name="Vehicle2" type="Node2D" parent="Speration"]
+position = Vector2(181, 168)
+script = ExtResource("1_l3c2a")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="Seperation" parent="Speration/Vehicle2" instance=ExtResource("2_wqi6d")]
+radius = 80.0
+
+[node name="Vehicle3" type="Node2D" parent="Speration"]
+position = Vector2(193, 216)
+script = ExtResource("1_l3c2a")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="Seperation" parent="Speration/Vehicle3" instance=ExtResource("2_wqi6d")]
+radius = 80.0
+
+[node name="Vehicle4" type="Node2D" parent="Speration"]
+position = Vector2(295, 176)
+script = ExtResource("1_l3c2a")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="Seperation" parent="Speration/Vehicle4" instance=ExtResource("2_wqi6d")]
+radius = 80.0
+
+[node name="Vehicle5" type="Node2D" parent="Speration"]
+position = Vector2(269, 236)
+script = ExtResource("1_l3c2a")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="Seperation" parent="Speration/Vehicle5" instance=ExtResource("2_wqi6d")]
+radius = 80.0
+
+[node name="Alignment" type="Node2D" parent="."]
+
+[node name="Vehicle" type="Node2D" parent="Alignment"]
+position = Vector2(810, 200)
+script = ExtResource("1_l3c2a")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="Alignment" parent="Alignment/Vehicle" instance=ExtResource("3_qn046")]
+radius = 80.0
+show_radius = true
+
+[node name="Vehicle2" type="Node2D" parent="Alignment"]
+position = Vector2(756, 178)
+script = ExtResource("1_l3c2a")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="Vehicle3" type="Node2D" parent="Alignment"]
+position = Vector2(768, 226)
+script = ExtResource("1_l3c2a")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="Vehicle4" type="Node2D" parent="Alignment"]
+position = Vector2(870, 186)
+script = ExtResource("1_l3c2a")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="Vehicle5" type="Node2D" parent="Alignment"]
+position = Vector2(844, 246)
+script = ExtResource("1_l3c2a")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="Cohesion" type="Node2D" parent="."]
+
+[node name="Vehicle" type="Node2D" parent="Cohesion"]
+position = Vector2(540, 435)
+script = ExtResource("1_l3c2a")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="Cohesion" parent="Cohesion/Vehicle" instance=ExtResource("4_jeawf")]
+radius = 100.0
+show_radius = true
+
+[node name="Vehicle2" type="Node2D" parent="Cohesion"]
+position = Vector2(473, 391)
+script = ExtResource("1_l3c2a")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="Cohesion" parent="Cohesion/Vehicle2" instance=ExtResource("4_jeawf")]
+radius = 100.0
+
+[node name="Vehicle3" type="Node2D" parent="Cohesion"]
+position = Vector2(473, 505)
+script = ExtResource("1_l3c2a")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="Cohesion" parent="Cohesion/Vehicle3" instance=ExtResource("4_jeawf")]
+radius = 100.0
+
+[node name="Vehicle4" type="Node2D" parent="Cohesion"]
+position = Vector2(619, 381)
+script = ExtResource("1_l3c2a")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="Cohesion" parent="Cohesion/Vehicle4" instance=ExtResource("4_jeawf")]
+radius = 100.0
+
+[node name="Vehicle5" type="Node2D" parent="Cohesion"]
+position = Vector2(613, 487)
+script = ExtResource("1_l3c2a")
+width = 20.0
+height = 40.0
+color = Color(1, 0, 0, 1)
+show_velocity = true
+show_desired_velocity = true
+mass = 1.0
+max_speed = 150.0
+max_force = 5.0
+max_turn_rate = 5.0
+_get_automatically = true
+
+[node name="Cohesion" parent="Cohesion/Vehicle5" instance=ExtResource("4_jeawf")]
+radius = 100.0
