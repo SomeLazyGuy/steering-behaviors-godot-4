@@ -13,8 +13,14 @@ The repository includes the following behaviors:
 - **Pursuit & Evasion**: Predictive movement, where agents either chase or avoid a moving target.
 - **Wander**: Simulates random movement with slight steering bias.
 - **Obstacle Avoidance**: Agents steer around obstacles in their path.
+- **Wall Avoidance**: Agents steer away from walls in there path.
+- **Interpose**: Agents move to the predicted position of two other nodes / agents.
+- **Hide**: Agents hide behind an obstacle to escape direkt line of sight of another agent.
+- **Path Following**: Agents follow or loop around a predifined path.
+- **Offset Pursuit**: Agents pursue a target agent while keeping a specific offset to this agent.
+- **Group Behaviors**: Basic group behaviors like **Cohesion**, **Seperation** and **Alignment**.
 
-Additional behaviors may be added in future updates, such as **Cohesion**, **Separation**, **Alignment**, and more.
+Additional behaviors may be added in future updates, such as **Flocking**, **Spacial Partitioning**, **Smoothing**, and more.
 
 ## Getting Started
 
